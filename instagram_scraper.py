@@ -32,7 +32,7 @@ def download_url(url):
     # Raise expection if we couldn't read the webpage
     res.raise_for_status()
     # Folder name
-    instagram_handle = url[url.find('instagram.com')+len('instagram.com')+1:-1]
+    instagram_handle = url[url.find('instagram.com')+len('instagram.com')+1:]
     folder_path = os.path.join(download_folder, instagram_handle)
     if not os.path.exists(folder_path):
         os.mkdir(folder_path)
@@ -92,7 +92,7 @@ def main():
     for downloader in downloadThreads:
         downloader.join()
     print 'All done.'
-    
+
 # Standard boilerplate to call the main() function to begin the program.
 if __name__ == '__main__':
   main()
