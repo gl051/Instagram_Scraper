@@ -1,8 +1,8 @@
 # Instagram Scraper
 
-A simple application for scraping public instagram accounts and download the most recent pictures.
+A python script for scraping public instagram accounts and download the most recent pictures.
 
-This software has been written as en exercise to get familiar with the following Python modules:
+This software has been written as en exercise to get familiar with the following modules:
 
 - Request
 - Beautiful Soup
@@ -12,7 +12,7 @@ Anyone using this software will be responsible for the use it makes of the pictu
 
 To run the program:
 
-1. Edit the .py file and specify the instagram urls
+1. Create a config.txt configuration file, see the config.sample provided.  
 2. Call the program with the following command:
-   python instagram_scraper.py
-3. Multiple threads, one per each instagram account, will be started to download the most recent pictures, duplicated are skipped. Under the folder 'instagram_downloads' you will find the photos organized by instagram handler.
+   python instagram_scraper.py [-verbose]
+3. Multiple threads, one per each instagram account, will be started to download the most recent pictures, duplicates are skipped. Under the folder 'instagram_downloads' you will find the photos organized by instagram handler.
