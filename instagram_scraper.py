@@ -37,7 +37,7 @@ def download_url(url):
     if not os.path.exists(folder_path):
         os.mkdir(folder_path)
 
-    print 'Started download {}'.format(instagram_handle)
+    print 'Started download {0}'.format(instagram_handle)
     soup = BeautifulSoup(res.text,"html.parser")
     # All the pictures URLs to download are in the script tag
     scripts = soup.select('script')
@@ -64,7 +64,7 @@ def download_url(url):
                 counter += 1
             if verbose_mode:
                 print 'Downloaded picture ', path
-    print 'Completed download {} with {} new pictures'.format(instagram_handle, counter)
+    print 'Completed download {0} with {1} new pictures'.format(instagram_handle, counter)
 
 
 # Gather our code in a main() function
