@@ -11,8 +11,8 @@ verbose_mode = False;
 
 def get_urls(config_file):
     if not os.path.isfile(config_file):
-        print "Can't find file {}".format(config_file)
-        print "Be sure to create a config file as the one provided as a sample"
+        print ("Can not find file {0}".format(config_file))
+        print ("Be sure to create a config file as the one provided as a sample")
         return None
     ret_list = []
     with open(config_file,'r') as fin:
@@ -37,7 +37,7 @@ def download_url(url):
     if not os.path.exists(folder_path):
         os.mkdir(folder_path)
 
-    print 'Started download {0}'.format(instagram_handle)
+    print ("Started download {0}".format(instagram_handle))
     soup = BeautifulSoup(res.text,"html.parser")
     # All the pictures URLs to download are in the script tag
     scripts = soup.select('script')
@@ -48,7 +48,7 @@ def download_url(url):
     # of the slipt is not a picture.
     nrange = max(0,len(picscript.text.split('"display_src":'))-1)
     counter = 0
-    for i in xrange(1, nrange):
+    for i in range(1, nrange):
         urlpic = picscript.text.split('"display_src":')[i].split('},')[0]
         # "https:\\/\\/scontent.cdninstagram.com\\/hphotos-xfa1\\/t51.2885-15\\/e15\\/11809535_437579513099534_959907557_n.jpg"
         urlpic = urlpic.replace("\\","")
@@ -59,12 +59,12 @@ def download_url(url):
             r = requests.get(urlpic)
             if r.status_code == 200:
                 with open(path, 'wb') as f:
-    			    for chunk in r.iter_content(1024):
-    				    f.write(chunk)
+                    for chunk in r.iter_content(1024):
+                        f.write(chunk)
                 counter += 1
             if verbose_mode:
-                print 'Downloaded picture ', path
-    print 'Completed download {0} with {1} new pictures'.format(instagram_handle, counter)
+                print ("Downloaded picture", path)
+    print ("Completed download {0} with {1} new pictures".format(instagram_handle, counter))
 
 
 # Gather our code in a main() function
@@ -91,7 +91,7 @@ def main():
     #Wait for all downloaders to complete
     for downloader in downloadThreads:
         downloader.join()
-    print 'All done.'
+    print ("All done.")
 
 # Standard boilerplate to call the main() function to begin the program.
 if __name__ == '__main__':
